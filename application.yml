@@ -1,14 +1,16 @@
+server:
+  port: 8888
 spring:
   application:
-    name: greeting-service
-# https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html
-management:
-  endpoints:
-    web:
-      exposure:
-        include:
-        - '*'
-
-greeting-service:
-  greeting: "Hello"
-  default-value: "World!"
+    name: microservice_config_server
+   # INTEGRANDO O SPRING CLOUD CONFIG SERVER COM GITHUB
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/JoseLuiz18Bd/microservice_config_server
+          #username: user_name
+          #password: password
+          default-label: main
+          search-paths:
+          - 'greeting-service*'
